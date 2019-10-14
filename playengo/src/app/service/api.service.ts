@@ -14,18 +14,16 @@ export class ApiService {
   constructor(private http: HttpClient) {  }
 
   public getAllPosts() {
-    let url = this.formUrl(new HttpParams());
+    let url = this.formUrl('posts', new HttpParams());
     return this.http.get(url).pipe(catchError(this.handleError));
-
   }
 
   public getImage(mediaId: string) {
     let params = new HttpParams().append('api_key', Config.API_KEY);
   }
 
-  private formUrl(params: HttpParams): string {
-    params.append('api_key', Config.API_KEY);
-    return `${Config.API_ENDPOINT}?${params.toString()}`;
+  private formUrl(path: string, params: HttpParams): string {
+    return `${Config.API_ENDPOINT}${path}?${params.append('api_key', Config.API_KEY).toString()}`;
   }
 
 
