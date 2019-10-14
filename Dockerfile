@@ -1,11 +1,14 @@
 FROM node:alpine
 
 RUN npm install -g @angular/cli
-RUN ng new playengo
+
+COPY ./playengo/package.json /playengo/
 
 WORKDIR /playengo
 
-# RUN npm install
+COPY ./playengo/. /playengo
+
+RUN npm install
 
 EXPOSE 4200
 
