@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
       this.setCurrentPost(0);
     });
 
-    setTimeout(() => {
+    setInterval(() => {
       this.currentIndex += 1;
 
       if (this.currentIndex > this.maxPost) {
