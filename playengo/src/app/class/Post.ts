@@ -1,10 +1,11 @@
-import { User } from './User'
-
 export interface Post {
     id: "9Usgp6nD6YI",
     created: string,
     mediaId: string,
-    user: User
+    user: {
+        id: string,
+        username: string,
+    }
     likes: number,
     title: string,
     description: string

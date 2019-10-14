@@ -13,9 +13,9 @@ export class AppComponent implements OnInit {
 
   title = 'playengo';
   allPosts: Post[];
-  post: Post;
+  post: Post = <Post> {};
   fullImage: string;
-  user;
+  user: User = <User> {};
   maxPost: number;
   currentIndex: number = 0;
 
@@ -31,13 +31,13 @@ export class AppComponent implements OnInit {
     });
 
     setTimeout(() => {
-        this.currentIndex += 1;
+      this.currentIndex += 1;
 
-        if (this.currentIndex > this.maxPost) {
-          this.currentIndex = 0;
-        }
+      if (this.currentIndex > this.maxPost) {
+        this.currentIndex = 0;
+      }
 
-        this.setCurrentPost(this.currentIndex);
+      this.setCurrentPost(this.currentIndex);
     }, 6000);
   }
 
