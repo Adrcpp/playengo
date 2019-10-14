@@ -19,15 +19,18 @@ export class ApiService {
   }
 
   public getImage(mediaId: string) {
-
     let url = this.formUrl('medias/' + encodeURIComponent(mediaId), new HttpParams());
+    return this.http.get(url).pipe(catchError(this.handleError));
+  }
+
+  public getUser(username: string) {
+    let url = this.formUrl('users/' + username, new HttpParams());
     return this.http.get(url).pipe(catchError(this.handleError));
   }
 
   private formUrl(path: string, params: HttpParams): string {
     return `${Config.API_ENDPOINT}${path}?${params.append('api_key', Config.API_KEY).toString()}`;
   }
-
 
   private handleError(error: HttpErrorResponse) {
 

@@ -1,8 +1,12 @@
 <div>
-  <h3> HELLLLOO</h3>
-  <h3>{{ post.user.username }}</h3>
-  <h3>{{ post.title }}</h3>
-  <h4>{{ post.likes }}</h4>
+
+  <h3>Name: {{ user.first_name }} {{ user.last_name }} </h3>
+  <img [src]="user.profile_images.small" />
+  <h3>Title: {{ post.title }}</h3>
+  <h4>Likes: {{ post.likes }}</h4>
+  <h4>Descr: {{ post.description }}</h4>
+  <h4>Date: {{ post.created | date }}</h4>
 
   <img class="imgFull" [src]="fullImage" />
+
 </div>
