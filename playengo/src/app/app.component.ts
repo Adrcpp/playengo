@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   title = 'playengo';
   allPosts: Post[];
   post: Post;
-  image: string;
+  fullImage: string;
 
   constructor(private apiService: ApiService) { }
 
@@ -21,10 +21,16 @@ export class AppComponent implements OnInit {
     let allPosts = this.apiService.getAllPosts()
     .subscribe((result: any) => {
       this.allPosts = result.response.posts;
-      this.post = this.allPosts[0];
- 
-      console.log(this.allPosts)
-      console.log(this.post)
+      this.setCurrentPost(0);
     });
+  }
+
+  private setCurrentPost(index: number) {
+    this.post = this.allPosts[index];
+    this.apiService.getImage(this.post.mediaId)
+    .subscribe((result: any) => {
+      this.fullImage = result.response.media.urls.full;
+    });
+
   }
 }

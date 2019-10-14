@@ -1,11 +1,8 @@
 <div>
   <h3> HELLLLOO</h3>
+  <h3>{{ post.user.username }}</h3>
   <h3>{{ post.title }}</h3>
   <h4>{{ post.likes }}</h4>
 
-  <tr *ngFor="let p of allPosts">
-      <td>{{ p.id }}</td>
-      <td>{{ p.title }}</td>
-      <td>{{ p.likes }}</td>
-  </tr>
+  <img class="imgFull" [src]="fullImage" />
 </div>

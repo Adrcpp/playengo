@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Config } from "../config/config"
 
 const httpOptions = {
@@ -19,7 +19,9 @@ export class ApiService {
   }
 
   public getImage(mediaId: string) {
-    let params = new HttpParams().append('api_key', Config.API_KEY);
+
+    let url = this.formUrl('medias/' + encodeURIComponent(mediaId), new HttpParams());
+    return this.http.get(url).pipe(catchError(this.handleError));
   }
 
   private formUrl(path: string, params: HttpParams): string {
